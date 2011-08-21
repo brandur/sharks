@@ -10,6 +10,6 @@ Sharks::Application.load_tasks
 
 task :parse => :environment do
   file = './GSAF5.csv'
-  GsafLogParser.new.parse(file)
+  GsafLogParser.new.parse_and_save(file)
 end
 

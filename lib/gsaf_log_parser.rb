@@ -1,6 +1,5 @@
 require 'csv'
-require 'iconv'
-require 'lightcsv'
+require 'geokit'
 
 #
 # pacman -S catdoc
@@ -10,7 +9,9 @@ require 'lightcsv'
 class GsafLogParser
   def parse(file)
     CSV.foreach(file, col_sep: '|') do |row|
-      parse_row({
+      # Skip the header row in the CSV
+      next if row[0] == 'Case #'
+      incident = parse_row({
         :case_id     => row[0],
         :occurred_on => row[1],
         :country     => row[2],
@@ -25,6 +26,20 @@ class GsafLogParser
         :species     => row[11],
         :source      => row[12],
       })
+      yield incident if block_given?
+      $stdout.puts "Parsed '#{incident.case_id}'"
+    end
+  end
+
+  def parse_and_save(file)
+    parse(file) do |new_incident|
+      incident = Incident.find_by_case_id(new_incident.case_id)
+      if incident
+        incident.attributes = new_incident.attributes
+      else
+        incident = new_incident
+      end
+      incident.save!
     end
   end
 
@@ -46,9 +61,6 @@ class GsafLogParser
     end
     incident.area            = sanitize(row[:area])
     incident.location        = sanitize(row[:location])
-    # @todo: geo lookup
-    incident.lat = nil
-    incident.lng = nil
     incident.activity        = sanitize(row[:activity])
     incident.name            = sanitize(row[:name]) do |str|
       if str

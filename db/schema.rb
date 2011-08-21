@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -16,8 +17,9 @@ ActiveRecord::Schema.define(:version => 20110801060029) do
     t.string   "case_id"
     t.date     "occurred_on"
     t.string   "occurred_on_str"
-    t.string   "lat"
-    t.string   "lng"
+    t.float    "lat"
+    t.float    "lng"
+    t.string   "full_address"
     t.string   "country"
     t.string   "area"
     t.string   "location"
@@ -34,5 +36,7 @@ ActiveRecord::Schema.define(:version => 20110801060029) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "incidents", ["lat", "lng"], :name => "index_incidents_on_lat_and_lng"
 
 end

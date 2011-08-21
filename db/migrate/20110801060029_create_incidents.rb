@@ -4,8 +4,9 @@ class CreateIncidents < ActiveRecord::Migration
       t.string   :case_id
       t.date     :occurred_on
       t.string   :occurred_on_str
-      t.string   :lat
-      t.string   :lng
+      t.float    :lat, { :length => 10, :decimals => 6 }
+      t.float    :lng, { :length => 10, :decimals => 6 }
+      t.string   :full_address
       t.string   :country
       t.string   :area
       t.string   :location
@@ -22,5 +23,6 @@ class CreateIncidents < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :incidents, [:lat, :lng]
   end
 end

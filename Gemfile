@@ -1,17 +1,17 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.0.rc5'
+gem 'rails', '~> 3.1.0.rc'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
 gem 'app'
 gem 'coffee-script'
+gem 'geokit'
+gem "geokit-rails3-1beta", "~> 0.3.1.beta1"
 gem 'jquery-rails'
-gem 'lightcsv'
 gem 'sass-rails', "~> 3.1.0.rc"
 gem 'slim'
-gem 'sql_funk', :git => 'git://github.com/lakim/sql_funk.git'
 gem 'sqlite3'
 gem 'uglifier'
 gem 'whenever', :require => false
