@@ -4,7 +4,9 @@
 // It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
 // the compiled file.
 //
-//= require jquery
-//= require jquery_ujs
-//= require vendor
-//= require_tree .
+//= require tween/Tween.js
+//= require three/Detector.js
+//= require three/RequestAnimationFrame.js
+//= require three/ThreeWebGL.js
+//= require three/ThreeExtras.js
+//= require globe/globe.js

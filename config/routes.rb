@@ -1,4 +1,9 @@
 Sharks::Application.routes.draw do
+  match 'incidents/globe.json' => 'incidents#globe'
+  match 'incidents(.:format)' => 'incidents#index'
+
+  root :to => 'incidents#index'
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

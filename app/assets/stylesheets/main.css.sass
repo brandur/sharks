@@ -1,0 +1,98 @@
+@import 'mixins'
+
+/*
+ * Important constants
+ */
+
+$blue: #4477aa
+
+$dark: #40404c
+
+$light: #bbb
+
+/*
+ * Basic elements
+ */
+
+a, a:visited, a:hover
+  color: $blue
+  text-decoration: none
+
+a:hover
+  text-decoration: underline
+
+body
+  color: #fff
+  background: #000
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif
+  font-size: 14px
+  font-weight: 300
+  line-height: 1.6em
+  margin: 70px
+
+em
+  font-style: italic
+
+h1
+  font-family: 'Raleway', 'Helvetica Neue', Helvetica, Arial, sans-serif
+  font-size: 80px
+  font-weight: 100
+  line-height: 1em
+  margin: 40px 0
+
+h2, h3, h4
+  font-family: 'Raleway', 'Helvetica Neue', Helvetica, Arial, sans-serif
+  font-weight: 200
+  margin: 30px 0
+
+h2
+  font-size: 34px
+
+h3
+  font-size: 24px
+
+h2 a, h2 a:visited, h2 a:hover, h3 a, h3 a:visited, h3 a:hover, h4 a, h4 a:visited, h4 a:hover
+  color: #000
+  text-decoration: none
+
+p
+  margin: 20px 0
+  text-align: justify
+
+strong
+  color: $blue
+  font-weight: bold
+
+ul
+  list-style-type: disc
+  padding: 0 0 0 30px
+
+  li
+    padding: 0 0 0 2px
+
+/*
+ * Global styles
+ */
+
+.app
+  color: $dark
+  font-size: 20px
+  margin: 0 0 0 12px
+
+.chart
+  height: 200px
+  overflow: hidden
+  width: 100%
+
+.meta
+  color: $light
+
+.row
+  margin: 0
+
+.clear_fix
+  clear: both
+
+#footer
+  margin: 40px 0
+

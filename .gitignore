@@ -1,6 +1,8 @@
 *.csv
 *.xls
+.DS_Store
 .bundle
+.sass-cache
 config/app.rb
 config/config.yml
 content
@@ -15,5 +17,4 @@ rake
 ruby/**/*
 test/
 tmp/**/*
-vendor/**/*
 config/initializers/secret_token.rb
