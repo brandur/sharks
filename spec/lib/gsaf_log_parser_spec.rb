@@ -37,6 +37,13 @@ describe 'gsaf_log_parser' do
         for_row({:occurred_on => "Late 1600s"}).occurred_on.should           == nil
       end
 
+      it 'should handle edge cases that the Ruby parser does not' do
+        for_row({:occurred_on => "25-Jut-1881"}).occurred_on.should  == Date.parse('1881-07-25')
+        for_row({:occurred_on => "Ca. 214 B.C."}).occurred_on.should == nil
+        for_row({:occurred_on => "09-Jan- 1874"}).occurred_on.should == Date.parse('1874-01-09')
+        for_row({:occurred_on => "Sep- 1966"}).occurred_on.should    == Date.parse('1966-09-01')
+      end
+
       it 'should respect nil' do
         for_row({:occurred_on => nil}).occurred_on.should == nil
       end

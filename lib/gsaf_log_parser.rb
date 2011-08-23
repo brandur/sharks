@@ -26,8 +26,10 @@ class GsafLogParser
         :species     => row[11],
         :source      => row[12],
       })
-      yield incident if block_given?
-      $stdout.puts "Parsed '#{incident.case_id}'"
+      if incident
+        yield incident if block_given?
+        $stdout.puts "Parsed '#{incident.case_id}'"
+      end
     end
   end
 
@@ -49,7 +51,7 @@ class GsafLogParser
     return unless incident.case_id
     incident.occurred_on     = sanitize(row[:occurred_on]) do |str|
       begin
-        Date.parse(str.gsub(/^reported /i, '').strip)
+        parse_date(str)
       rescue
         nil
       end
@@ -96,6 +98,29 @@ class GsafLogParser
   end
 
   private
+
+  DATE_ERRORS = {
+    /-\s+([0-9]+)/              => '-\1', 
+    /^(Ca.)?\s*[0-9]+\s*B\.C\./ => '', 
+    /Jut/i                      => 'Jul'
+  }.freeze
+
+  def parse_date(str)
+    # First of all, try to strip 'reported' from the beginning
+    str = str.gsub(/^reported /i, '').strip
+
+    # Fix some known GSAF spelling errors that we know the Ruby date parser 
+    # handles improperly
+    DATE_ERRORS.each do |search, replace|
+      str = str.gsub(search, replace)
+    end
+
+    unless str.blank?
+      Date.parse(str)
+    else
+      nil
+    end
+  end
 
   def sanitize(str)
     str = nil if str.blank?
