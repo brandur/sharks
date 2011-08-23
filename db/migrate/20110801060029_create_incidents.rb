@@ -23,6 +23,7 @@ class CreateIncidents < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :incidents, :occurred_on
     add_index :incidents, [:lat, :lng]
   end
 end

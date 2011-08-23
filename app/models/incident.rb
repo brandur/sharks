@@ -1,6 +1,7 @@
 class Incident < ActiveRecord::Base
   acts_as_mappable
   before_save :geocode
+  default_scope :order => 'occurred_on DESC'
   validates_presence_of :case_id
   validates_uniqueness_of :case_id
 
