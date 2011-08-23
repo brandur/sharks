@@ -124,7 +124,7 @@ class GsafLogParser
 
   def sanitize(str)
     str = nil if str.blank?
-    str = str.strip if str
+    str = str.strip.force_encoding('utf-8') if str
     str = yield str if block_given?
     str
   end
