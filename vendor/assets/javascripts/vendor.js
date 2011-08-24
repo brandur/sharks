@@ -10,3 +10,4 @@
 //= require three/ThreeWebGL.js
 //= require three/ThreeExtras.js
 //= require globe/globe.js
+//= require highcharts/highcharts.js

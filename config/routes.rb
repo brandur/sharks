@@ -1,6 +1,8 @@
 Sharks::Application.routes.draw do
-  match 'incidents/globe.json' => 'incidents#globe'
-  match 'incidents(.:format)' => 'incidents#index'
+  match 'incidents/by_gender(.:format)'      => 'incidents#by_gender'
+  match 'incidents/globe(.:format)'          => 'incidents#globe'
+  match 'incidents/per_year(.:format)'       => 'incidents#per_year'
+  match 'incidents(.:format)'                => 'incidents#index'
 
   root :to => 'incidents#index'
   
