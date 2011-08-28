@@ -1,7 +1,10 @@
 Sharks::Application.routes.draw do
+  match 'incidents/by_age_group(.:format)'   => 'incidents#by_age_group'
+  match 'incidents/by_country(.:format)'     => 'incidents#by_country'
+  match 'incidents/by_fatality(.:format)'    => 'incidents#by_fatality'
   match 'incidents/by_gender(.:format)'      => 'incidents#by_gender'
+  match 'incidents/by_year(.:format)'        => 'incidents#by_year'
   match 'incidents/globe(.:format)'          => 'incidents#globe'
-  match 'incidents/per_year(.:format)'       => 'incidents#per_year'
   match 'incidents(.:format)'                => 'incidents#index'
 
   root :to => 'incidents#index'

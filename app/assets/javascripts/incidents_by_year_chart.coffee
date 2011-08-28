@@ -1,11 +1,11 @@
 $ ->
-  $.get '/incidents/per_year.json', 
+  $.get '/incidents/by_year.json', 
     (data) ->
       chart = new Highcharts.Chart 
         chart:
           backgroundColor: '#000'
           defaultSeriesType: 'line'
-          renderTo: 'incidents_per_year'
+          renderTo: 'incidents_by_year'
         credits:
           enabled: false
         legend:
@@ -17,7 +17,7 @@ $ ->
           }
         ]
         title:
-          text: 'Attacks per year'
+          text: 'Attacks by year'
         tooltip:
           backgroundColor: 'rgba(255, 255, 255, .65)'
           borderWidth: 0
