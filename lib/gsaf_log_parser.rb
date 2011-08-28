@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 require 'csv'
 require 'geokit'
 
@@ -58,8 +60,20 @@ class GsafLogParser
     end
     incident.occurred_on_str = sanitize(row[:occurred_on])
     incident.country         = sanitize(row[:country]) do |str|
-      str = str.titlecase if str && str != 'USA'
-      str
+      if str
+        case str.downcase
+        when 'reunion'
+          'Réunion'
+        when 'uae'
+          'United Arab Emirates'
+        when /^united arab emirates/
+          'United Arab Emirates'
+        when 'usa'
+          'USA'
+        else
+          str.titlecase
+        end
+      end
     end
     incident.area            = sanitize(row[:area])
     incident.location        = sanitize(row[:location])

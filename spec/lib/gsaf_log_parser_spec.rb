@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 require 'spec_helper'
 
 require 'gsaf_log_parser'
@@ -62,8 +64,18 @@ describe 'gsaf_log_parser' do
         for_row({:country => 'South Africa'}).country.should == 'South Africa'
       end
 
-      it 'should leave "USA" alone' do
+      it 'should handle UAE variations consistently' do
+        for_row({:country => 'UAE'}).country.should                        == 'United Arab Emirates'
+        for_row({:country => 'United Arab Emirates (UAE)'}).country.should == 'United Arab Emirates'
+      end
+
+      it 'should change all USA variations to "USA"' do
         for_row({:country => 'USA'}).country.should == 'USA'
+      end
+
+      it 'should properly quote Réunion' do
+        for_row({:country => 'Reunion'}).country.should == 'Réunion'
+        for_row({:country => 'Réunion'}).country.should == 'Réunion'
       end
 
       it 'should respect nil' do
