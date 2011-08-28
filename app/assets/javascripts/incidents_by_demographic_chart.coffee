@@ -10,9 +10,6 @@ $ ->
               chart = new Highcharts.Chart 
                 chart:
                   renderTo: 'incidents_by_demographic'
-                  backgroundColor: '#000'
-                credits:
-                  enabled: false
                 series: [
                   {
                     type: 'pie'
@@ -44,18 +41,13 @@ $ ->
                       { name: age_group, y: count }
                     dataLabels:
                       enabled: true
-                      color: '#fff'
                       connectorColor: '#fff'
                   }
                 ]
                 subtitle:
                   text: 'By age group, gender, and fatality over the last 10 years'
                 tooltip:
-                  backgroundColor: 'rgba(255, 255, 255, .65)'
-                  borderWidth: 0
-                  borderRadius: 0
                   formatter: ->
                     "<strong>#{this.point.name}</strong> #{this.y} #{if this.y != 1 then 'attacks' else 'attack'}"
-                  shadow: false
                 title:
                   text: 'Attacks by demographic'

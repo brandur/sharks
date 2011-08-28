@@ -13,6 +13,7 @@ class IncidentsController < ApplicationController
   end
 
   def by_country
+    # todo: cross-plaform dates? (`STRFTIME` will fail on non-SQLite DBs)
     incident_groups = ActiveRecord::Base.connection.select_all(<<eos)
 SELECT occurred_on_year AS year, country, count_all AS count
 FROM (
