@@ -8,20 +8,20 @@
   .col_4
     ul
       - @incidents.each do |incident|
-        li
+        li.incident
           = incident.location_str
           span.meta
             / @todo: hyperlinks?
             - if incident.sex && incident.age
               |  #{incident.sex.upcase}/#{incident.age}
-            - if incident.injury
-              em
-                |  (#{incident.injury})
             - cutoff = Date.today - 1.year
             - if incident.occurred_on > cutoff
               |  #{distance_of_time_in_words(incident.occurred_on, Date.today)} ago
             - else
               |  #{incident.occurred_on.strftime('%b %e, %Y')}
+            - if incident.injury
+              p.injury
+                | #{incident.injury}
   .col_8.last#globe
 
 .row

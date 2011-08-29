@@ -3,20 +3,19 @@ $ ->
     (data) ->
       chart = new Highcharts.Chart 
         chart:
-          backgroundColor: '#000'
           defaultSeriesType: 'line'
           renderTo: 'incidents_by_year'
         series: [
           {
-            name: 'Attacks'
+            name: 'Incidents'
             data: data.map((y) -> y.count)
           }
         ]
         title:
-          text: 'Attacks by year'
+          text: 'Incidents by year'
         tooltip:
           formatter: ->
-            "#{this.y} #{if this.y != 1 then 'attacks' else 'attack'} in #{this.x}"
+            "#{this.y} #{if this.y != 1 then 'incidents' else 'incident'} in #{this.x}"
         xAxis:
           categories: data.map((y) -> y.year)
           labels:

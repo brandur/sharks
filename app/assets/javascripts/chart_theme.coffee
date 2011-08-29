@@ -9,14 +9,21 @@ Highcharts.theme =
     pie:
       dataLabels:
         color: '#fff'
+        connectorColor: '#fff'
+  subtitle:
+    style:
+      color: '#666'
   title:
     style:
       color: '#fff'
   tooltip:
-    backgroundColor: 'rgba(255, 255, 255, .65)'
-    borderWidth: 0
+    backgroundColor: '#000'
+    borderColor: '#fff'
+    borderWidth: 1
     borderRadius: 0
     shadow: false
+    style:
+      color: '#fff'
   yAxis:
     gridLineColor: 'rgba(255, 255, 255, .1)'
 

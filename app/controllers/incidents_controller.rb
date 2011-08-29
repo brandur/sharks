@@ -66,7 +66,7 @@ eos
   end
 
   def index
-    @incidents = Incident.limit(15)
+    @incidents = Incident.limit(10)
     respond_to do |format|
       format.html
       format.json { render :json => @incidents }

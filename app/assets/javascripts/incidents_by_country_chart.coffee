@@ -9,15 +9,15 @@ $ ->
           renderTo: 'incidents_by_country'
         series: [
           {
-            name: 'Attacks'
+            name: 'Incidents'
             data: current_year_data.map((y) -> y.count)
           }
         ]
         title:
-          text: "Attacks in #{current_year}"
+          text: "Incidents by country (in #{current_year})"
         tooltip:
           formatter: ->
-            "#{this.y} #{if this.y != 1 then 'attacks' else 'attack'} in #{this.x}"
+            "#{this.y} #{if this.y != 1 then 'incidents' else 'incident'} in #{this.x}"
         xAxis:
           categories: current_year_data.map((y) -> y.country)
         yAxis:

@@ -3,8 +3,6 @@ $ ->
     (age_group_data) ->
       $.get '/incidents/by_fatality.json', 
         (fatality_data) ->
-          fatal     = fatality_data.fatal / fatality_data.total
-          non_fatal = 1 - fatal
           $.get '/incidents/by_gender.json', 
             (gender_data) ->
               chart = new Highcharts.Chart 
@@ -13,7 +11,7 @@ $ ->
                 series: [
                   {
                     type: 'pie'
-                    name: 'Attacks by fatality (last 10 years)'
+                    name: 'Incidents by fatality (last 10 years)'
                     size: '35%',
                     innerSize: '25%'
                     data: [
@@ -24,7 +22,7 @@ $ ->
                       enabled: false
                   }, {
                     type: 'pie'
-                    name: 'Attacks by gender (last 10 years)'
+                    name: 'Incidents by gender (last 10 years)'
                     size: '45%',
                     innerSize: '35%'
                     data: [
@@ -35,19 +33,18 @@ $ ->
                       enabled: false
                   }, {
                     type: 'pie'
-                    name: 'Attacks by age group (last 10 years)'
+                    name: 'Incidents by age group (last 10 years)'
                     innerSize: '55%'
                     data: for age_group, count of age_group_data
                       { name: age_group, y: count }
                     dataLabels:
                       enabled: true
-                      connectorColor: '#fff'
                   }
                 ]
                 subtitle:
                   text: 'By age group, gender, and fatality over the last 10 years'
                 tooltip:
                   formatter: ->
-                    "<strong>#{this.point.name}</strong> #{this.y} #{if this.y != 1 then 'attacks' else 'attack'}"
+                    "<strong>#{this.point.name}</strong> #{this.y} #{if this.y != 1 then 'incidents' else 'incident'}"
                 title:
-                  text: 'Attacks by demographic'
+                  text: 'Incidents by demographic'
