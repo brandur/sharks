@@ -21,6 +21,7 @@ task :parse => :environment do
   Sharks::GsafLogParser.new.parse_and_save(file)
 end
 
+# Install `xls2csv` on Archlinux with `pacman -S catdoc`
 task :xls2csv do
   file_in  = ENV['FILE_IN']  || "#{Rails.root}/gsaf.xls"
   file_out = ENV['FILE_OUT'] || "#{Rails.root}/gsaf.csv"

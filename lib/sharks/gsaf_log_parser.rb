@@ -3,11 +3,6 @@
 require 'csv'
 require 'geokit'
 
-#
-# pacman -S catdoc
-# xls2csv -c\| GSAF5.xls > GSAF5.csv
-#
-
 module Sharks
   class GsafLogParser
     def parse(file)
