@@ -2,12 +2,12 @@
 
 require 'spec_helper'
 
-require 'gsaf_log_parser'
+require 'sharks'
 
-describe 'gsaf_log_parser' do
+describe Sharks::GsafLogParser do
   # Before all because the parser is stateless
   before(:all) do
-    @p = GsafLogParser.new
+    @p = Sharks::GsafLogParser.new
   end
 
   describe 'parse_row' do
