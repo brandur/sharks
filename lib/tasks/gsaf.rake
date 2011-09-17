@@ -26,7 +26,7 @@ task :xls2csv do
   file_in  = ENV['FILE_IN']  || "#{Rails.root}/gsaf.xls"
   file_out = ENV['FILE_OUT'] || "#{Rails.root}/gsaf.csv"
   assert_cmd_present('xls2csv')
-  `xls2csv -c\| #{file_in} > #{file_out}`
+  `xls2csv -c\\| #{file_in} > #{file_out}`
 end
 
 def assert_cmd_present(cmd)
