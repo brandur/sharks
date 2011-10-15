@@ -8,19 +8,12 @@ gem 'rails', '3.1.0'
 gem 'app'
 gem 'geokit'
 gem 'geokit-rails3-1beta', '~> 0.3.1.beta1'
-gem 'grit'
 gem 'jquery-rails'
 gem 'rake', '~> 0.9.2'
 gem 'slim'
 gem 'sql_funk', :git => 'git://github.com/brandur/sql_funk.git'
 gem 'sqlite3'
-gem 'tilt'
 gem 'whenever', :require => false
-
-# Supported content formats through Tilt, see https://github.com/rtomayko/tilt
-gem 'redcarpet'
-#gem 'RedCloth' -- removed until deprecation warning is fixed
-gem 'wikicloth'
 
 # Gems used only for assets and not required
 # in production environments by default.

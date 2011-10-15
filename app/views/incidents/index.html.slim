@@ -1,28 +1,62 @@
 .row
+  .pre_2.col_8.suf_2.last
+    h2#intro Sharks
+    p Sharks (superorder Selachimorpha) are a type of fish with a full cartilaginous skeleton and a highly streamlined body. The earliest known sharks date from more than 420 million years ago.
+    p Since that time, sharks have diversified into 440 species, ranging in size from the small dwarf lanternshark, Etmopterus perryi, a deep sea species of only 17 centimetres (6.7 in) in length, to the whale shark, Rhincodon typus, the largest fish, which reaches approximately 12 metres (39 ft) and which feeds only on plankton, squid, and small fish by filter feeding. Sharks are found in all seas and are common down to depths of 2,000 metres (6,600 ft). They generally do not live in freshwater, with a few exceptions such as the bull shark and the river shark which can live both in seawater and freshwater. They breathe through five to seven gill slits. Sharks have a covering of dermal denticles that protects their skin from damage and parasites, and improves their fluid dynamics so the shark can move faster. They have several sets of replaceable teeth.
+    p Well-known species such as the great white shark, tiger shark, blue shark, mako shark, and the hammerhead are apex predators, at the top of the underwater food chain. Their extraordinary skills as predators fascinate and frighten humans, even as their survival is under serious threat from fishing and other human activities.
+    p.more
+      a href='' Collapse
+
+.row
   .col_12.last
     h1
       | Global Incident Report
-      span.app Sharks
 
 .row
-  .col_4
-    ul
+  .col_12.last
+    - if @incidents.count > 0
+      - incident = @incidents.first
+      p#latest
+        | The latest incident occurred <strong>#{display_date(incident.occurred_on)}</strong> at <strong>#{incident.location_raw}</strong>. 
+        - if incident.is_fatal && incident.is_provoked
+          | It was fatal, but provoked.
+        - elsif incident.is_fatal
+          | It was fatal.
+        - elsif incident.is_provoked
+          | It was a provoked.
+      ul#years
+        li
+          a href='' Today
+        li 
+          a href='' 2010
+        li 
+          a href='' 2009
+    table#incidents
+      tr
+        th Location
+        th Sex
+        th Age
+        th Date
+        th Description
       - @incidents.each do |incident|
-        li.incident
-          = incident.location_str
-          span.meta
-            / @todo: hyperlinks?
-            - if incident.sex && incident.age
-              |  #{incident.sex.upcase}/#{incident.age}
-            - cutoff = Date.today - 1.year
-            - if incident.occurred_on > cutoff
-              |  #{distance_of_time_in_words(incident.occurred_on, Date.today)} ago
-            - else
-              |  #{incident.occurred_on.strftime('%b %e, %Y')}
+        tr
+          td
+            = incident.location_raw
+            /= incident.location_str
+          td
+            - if incident.sex
+              | #{incident.sex.upcase}
+          td
+            - if incident.age
+              | #{incident.age}
+          td
+            = display_date(incident.occurred_on, true)
+          td
             - if incident.injury
-              p.injury
-                | #{incident.injury}
-  .col_8.last#globe
+              | #{incident.injury}
+    p.more
+      a href='' More incidents &rarr;
+  /.col_4.last#globe
 
 .row
   .col_12.last

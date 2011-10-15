@@ -10,16 +10,18 @@ $dark: #666
 
 $light: #666
 
+$extra_light: rgba(255, 255, 255, .1)
+
 /*
  * Basic elements
  */
 
 a, a:visited, a:hover
   color: $blue
-  text-decoration: none
+  cursor: pointer
 
 a:hover
-  text-decoration: underline
+  color: #fff
 
 body
   color: #fff
@@ -65,25 +67,40 @@ strong
 
 ul
   list-style-type: disc
+  margin: 20px 0
   padding: 0 0 0 30px
 
   li
     padding: 0 0 0 2px
 
+table
+  border-bottom: 1px solid $light
+  border-collapse: separate
+  border-spacing: 10px 2px
+  border-top: 1px solid $light
+  font-size: 12px
+  padding: 14px 0
+  width: 100%
+  
+  tr
+
+    td
+      border-top: 1px solid $extra_light
+
+    th
+      color: $blue
+      font-style: italic
+      text-align: left
+
 /*
  * Global styles
  */
-
-.app
-  color: $dark
-  font-size: 20px
-  margin: 0 0 0 12px
 
 .meta
   color: $light
 
 .row
-  margin: 0
+  margin: 10px 0
   max-width: none
 
 .clear_fix

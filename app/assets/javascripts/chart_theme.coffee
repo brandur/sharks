@@ -1,3 +1,6 @@
+fontFamily = "'Helvetica Neue', Helvetica, Arial, sans-serif"
+lightColor = '#666'
+
 Highcharts.theme = 
   chart:
     backgroundColor: '#000'
@@ -12,10 +15,13 @@ Highcharts.theme =
         connectorColor: '#fff'
   subtitle:
     style:
-      color: '#666'
+      color: lightColor
+      fontFamily: fontFamily
+      fontSize: '12px'
   title:
     style:
       color: '#fff'
+      fontFamily: fontFamily
   tooltip:
     backgroundColor: '#000'
     borderColor: '#fff'
@@ -24,8 +30,19 @@ Highcharts.theme =
     shadow: false
     style:
       color: '#fff'
+      fontFamily: fontFamily
+      fontSize: '12px'
+  xAxis:
+    labels:
+      style:
+        color: lightColor
+        fontFamily: fontFamily
   yAxis:
     gridLineColor: 'rgba(255, 255, 255, .1)'
+    labels:
+      style:
+        color: lightColor
+        fontFamily: fontFamily
 
 # Apply the theme
 highchartsOptions = Highcharts.setOptions(Highcharts.theme);
